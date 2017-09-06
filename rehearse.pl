@@ -8,13 +8,19 @@ use Term::ANSIColor qw{RESET BOLD WHITE BLUE ON_WHITE ON_YELLOW ON_GREEN};
 
   chomp $l;
 
-  if ($l=~/\/(.*?)\//){
+  if (my @a = ($l=~/\/(.*?)\//g)){
 
-    print $k, BOLD WHITE ON_YELLOW $1, RESET, "\n";
+    my @d;
+    for my $s (@a){
+      push @d, BOLD WHITE ON_YELLOW $s, RESET;
+    }
+
+    print join " ... ", @d;
+    print "\n";
 
     sleep 5;
 
-    $l=~s{/(.*)/}[BOLD BLUE ON_GREEN $1, RESET]e;
+    $l=~s{/(.*?)/}[BOLD BLUE ON_GREEN $1, RESET]ge;
 
     print $l, "\n";
 
