@@ -25,7 +25,9 @@ use Term::ANSIColor qw{RESET BOLD WHITE BLUE ON_WHITE ON_YELLOW ON_GREEN};
     print $l, "\n";
 
     sleep 2;
-  }  
+  } elsif ($l=~/===/){
+    print $l,"\n";
+  }
 
 #}
 
